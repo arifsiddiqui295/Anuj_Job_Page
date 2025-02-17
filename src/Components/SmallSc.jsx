@@ -2,60 +2,46 @@ import React from "react";
 
 export default function SmallSc({ jobs }) {
   return (
-    <div className="max-h-screen w-full p-7 felx felx-col ">
+    <div className="w-full p-4 flex flex-col gap-6">
       {jobs.map((job, idx) => (
         <div
           key={idx}
-          className=" h-[70%] w-full border border-gray-400 hover:scale-105 cursor-pointer  transition duration-300 mb-6 rounded-xl overflow-hidden"
+          className="w-full border border-gray-300 bg-white shadow-md rounded-xl overflow-hidden p-4 transition duration-300 hover:scale-105"
         >
-          <div className="w-full">
-            {/* JD Header */}
-            <div className="w-full h-auto flex justify-between items-center text-left border-b-2 p-3">
-              {/* Job Info */}
-              <div className="md:flex md:flex-col flex-wrap">
-                <div className="font-semibold tracking-wide">
-                  {job.company_name}
-                </div>
-                <div className="text-2xl">{job.role}</div>
-                <div>{job.location}</div>
-              </div>
-              <div className="flex flex-wrap h-auto">
-                <button className="border rounded-xl  hover:bg-[#5A81FA] pl-4 pr-4 pt-1 pb-1 cursor-pointer bg-[#2B308B] text-white">
-                  <span className="font-bold">Apply</span>
-                </button>
-              </div>
-            </div>
+          {/* Job Header */}
+          <div className="w-full flex flex-col gap-2 border-b pb-3">
+            <h3 className="text-lg font-bold text-gray-900">{job.role}</h3>
+            <h2 className="text-xl font-bold text-blue-700">{job.company_name}</h2>
+            <p className="text-gray-500 text-sm">{job.location}</p>
+          </div>
 
-            {/* Job Description */}
-            <div className="w-full flex flex-wrap md:flex-col p-3 md:gap-8 border-b-2 border">
-              <p className="text-left font-medium">{job.discrip}</p>
-              <div className="flex gap-1">
-                <details>
-                  <summary className="cursor-pointer text-blue-500">
-                    Read More
-                  </summary>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores totam accusamus magnam cupiditate facilis soluta
-                    voluptate hic libero. Odit, animi.
-                  </p>
-                </details>
-              </div>
-            </div>
+          {/* Job Description */}
+          <div className="py-3 border-b">
+            <p className="text-gray-700 text-sm leading-relaxed">{job.discrip}</p>
+            <details className="mt-2 cursor-pointer text-[#4d6bfe] font-medium">
+              <summary>Read More</summary>
+              <p className="mt-2 text-gray-600 text-sm">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores totam accusamus magnam cupiditate facilis soluta voluptate hic libero.
+              </p>
+            </details>
+          </div>
 
-            {/* Salary Info */}
-            <div className="flex flex-col flex-wrap md:flex-col p-3 justify-center gap-2">
-              <div className="self-start">
-                <h1 className="text-2xl font-semibold">Base Pay</h1>
-              </div>
-              <div className="border-2 p-3 m-2">
-                <div className="text-2xl mb-2">
-                  {job.salary}{" "}
-                  <span className="text-sm">/mo (Employer est)</span>
-                </div>
-                <p>{job.location}</p>
-              </div>
+          {/* Salary Info */}
+          <div className="pt-3">
+            <h1 className="text-lg font-semibold text-gray-900">Base Pay</h1>
+            <div className="mt-2 border border-[#91a0ed] p-3 rounded-lg bg-blue-50">
+              <p className="text-lg font-semibold text-gray-700">
+                ₹{job.salary} <span className="text-sm text-gray-500">/mo (Employer est.)</span>
+              </p>
+              <p className="text-gray-600 text-sm mt-1">{job.location}</p>
             </div>
+          </div>
+
+          {/* Apply Button */}
+          <div className="mt-4 flex justify-center">
+            <button className="bg-[#4d6bfe] text-white px-5 py-2 rounded-lg shadow-md hover:bg-[#3b5edb] transition-all">
+              Apply Now
+            </button>
           </div>
         </div>
       ))}
